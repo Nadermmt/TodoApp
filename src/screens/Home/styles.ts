@@ -15,6 +15,15 @@ export const styles = StyleSheet.create({
         color: Colors.black,
         margin: 8
     },
+    searchInput: {
+        margin: 8,
+        padding: 4,
+        borderWidth: 1,
+        borderColor: Colors.black
+    },
+    numberOfItemsLeft: {
+        margin: 8
+    },
     addButton: {
         flex: 0.08,
         margin: 8,

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Alert, FlatList, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, FlatList, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {styles} from './styles';
 import {useDispatch, useSelector} from "react-redux";
@@ -13,7 +13,8 @@ const Home = ({ navigation }) => {
     const todoList = useSelector(state => state.todo.list);
     const [state, setState] = useState({
         isFormVisible: false,
-        itemToEdit: null
+        itemToEdit: null,
+        searchText: ''
     });
     const dispatch = useDispatch();
 
@@ -43,16 +44,23 @@ const Home = ({ navigation }) => {
             >
                 <Text style={styles.logoutButtonText}>Logout</Text>
             </TouchableOpacity>
-            <FlatList data={todoList} renderItem={({item, index}) =>
-                <TodoItemCard
-                    data={item}
-                    onComplete={() => dispatch(completeItem(index))}
-                    onPriorityChange={() => dispatch(changePriority(index))}
-                    onDelete={() => dispatch(deleteItem(index))}
-                    onEdit={() => setState({...state, itemToEdit: item, isFormVisible: true})}
-                    onDuplicate={() => dispatch(duplicateItem(item))}
-                />
-            }/>
+            <TextInput
+                style={styles.searchInput}
+                onChangeText={text => setState({...state, searchText: text})}
+                placeholder={'Filter list'}
+            />
+            {todoList.length > 0 && <Text style={styles.numberOfItemsLeft}>{todoList.filter(item => (item.isCompleted !== true && item.desc.includes(state.searchText))).length + " items left"}</Text>}
+            <FlatList data={todoList.filter(item => item.desc.includes(state.searchText))}
+                      renderItem={({item, index}) =>
+                          <TodoItemCard
+                              data={item}
+                              onComplete={() => dispatch(completeItem(index))}
+                              onPriorityChange={() => dispatch(changePriority(index))}
+                              onDelete={() => dispatch(deleteItem(index))}
+                              onEdit={() => setState({...state, itemToEdit: item, isFormVisible: true})}
+                              onDuplicate={() => dispatch(duplicateItem(item))}
+                          />
+                      }/>
             <ImageButton
                 containerStyle={styles.addButton}
                 source={Images.plus}
