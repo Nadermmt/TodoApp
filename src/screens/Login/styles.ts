@@ -15,7 +15,8 @@ export const styles = StyleSheet.create({
         color: Colors.black
     },
     loginButtonContainer: {
-        padding: 4
+        padding: 4,
+        marginTop: 8
     },
     loginButtonText: {
         color: Colors.black

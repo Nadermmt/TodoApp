@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {TextInput, View} from 'react-native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {styles} from './styles';
+import {TextButton} from "../../components/buttons";
 
 const Login = ({ navigation }) => {
     const [passCode, setPassCode] = useState('');
@@ -19,12 +20,13 @@ const Login = ({ navigation }) => {
                 style={styles.passcodeInput}
                 onChangeText={text => setPassCode(text)}
                 keyboardType={'number-pad'}
+                placeholder={'Passcode = 1234'}
             />
-            <TouchableOpacity
-                style={styles.loginButtonContainer}
-                onPress={onLogin}>
-                <Text style={styles.loginButtonText}>Login</Text>
-            </TouchableOpacity>
+            <TextButton
+                containerStyle={styles.loginButtonContainer}
+                label={'Login'}
+                onPress={onLogin}
+            />
         </View>
     );
 };
