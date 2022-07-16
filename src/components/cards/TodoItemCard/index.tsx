@@ -5,7 +5,21 @@ import {Images} from '../../../assets';
 import {TodoItem} from '../../../utils';
 import {ImageButton} from '../../buttons';
 
-const TodoItemCard: React.FC<{data: TodoItem, onEdit, onComplete, onPriorityChange, onDelete}> = ({ data, onEdit, onComplete, onPriorityChange, onDelete }) => {
+const TodoItemCard: React.FC<{
+    data: TodoItem,
+    onEdit,
+    onComplete,
+    onPriorityChange,
+    onDelete,
+    onDuplicate
+}> = ({
+          data,
+          onEdit,
+          onComplete,
+          onPriorityChange,
+          onDelete,
+          onDuplicate
+}) => {
     return (
         <View style={styles.container}>
             <ImageButton
@@ -31,6 +45,10 @@ const TodoItemCard: React.FC<{data: TodoItem, onEdit, onComplete, onPriorityChan
             <ImageButton
                 source={Images.bin}
                 onPress={onDelete}
+            />
+            <ImageButton
+                source={Images.bin}
+                onPress={onDuplicate}
             />
         </View>
     );

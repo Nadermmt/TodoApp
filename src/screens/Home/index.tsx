@@ -3,7 +3,7 @@ import {Alert, FlatList, Text, TouchableOpacity, View} from 'react-native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {styles} from './styles';
 import {useDispatch, useSelector} from "react-redux";
-import {addItem, deleteItem, editItem} from '../../redux/Slices';
+import {addItem, changePriority, completeItem, deleteItem, duplicateItem, editItem} from '../../redux/Slices';
 import {TodoItemCard} from "../../components";
 import {AddEditTodoItemModal} from "../../modals";
 import {ImageButton} from "../../components/buttons";
@@ -46,10 +46,11 @@ const Home = ({ navigation }) => {
             <FlatList data={todoList} renderItem={({item, index}) =>
                 <TodoItemCard
                     data={item}
-                    onComplete={() => onSubmitItem({...item, isCompleted: !item.isCompleted})}
-                    onPriorityChange={() => onSubmitItem({...item, isImportant: !item.isImportant})}
+                    onComplete={() => dispatch(completeItem(index))}
+                    onPriorityChange={() => dispatch(changePriority(index))}
                     onDelete={() => dispatch(deleteItem(index))}
                     onEdit={() => setState({...state, itemToEdit: item, isFormVisible: true})}
+                    onDuplicate={() => dispatch(duplicateItem(item))}
                 />
             }/>
             <ImageButton
