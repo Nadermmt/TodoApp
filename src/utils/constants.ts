@@ -14,3 +14,15 @@ export const ImageChoices = [
         source: Images.work
     }
 ]
+
+export const SortItems = [
+    {
+        label: 'Priority'
+    },
+    {
+        label: 'Created Date'
+    },
+    {
+        label: 'Completed Date'
+    }
+]

@@ -50,10 +50,13 @@ export const todoSlice = createSlice({
                     isImportant: !item.isImportant
                 });
             }
+        },
+        clearList: (state) => {
+            state.list = [];
         }
     }
 })
 
-export const { addItem, editItem, deleteItem, completeItem, changePriority, duplicateItem } = todoSlice.actions
+export const { addItem, editItem, deleteItem, completeItem, changePriority, duplicateItem, clearList } = todoSlice.actions
 
 export default todoSlice.reducer

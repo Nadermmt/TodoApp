@@ -21,6 +21,16 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: Colors.black
     },
+    sortTitle: {
+        marginHorizontal: 8,
+        marginTop: 8
+    },
+    sortItemContainer: {
+        borderRadius: 8,
+        width: undefined,
+        margin: 4,
+        marginBottom: 8
+    },
     numberOfItemsLeft: {
         margin: 8
     },
