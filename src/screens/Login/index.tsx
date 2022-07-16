@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {TextInput, View} from 'react-native';
+import {Alert, TextInput, View} from 'react-native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {styles} from './styles';
 import {TextButton} from "../../components/buttons";
@@ -11,6 +11,8 @@ const Login = ({ navigation }) => {
         if (passCode === '1234') {
             await AsyncStorage.setItem('isUserLoggedIn', JSON.stringify(true))
             navigation.navigate('Home');
+        } else {
+            Alert.alert('Please enter correct passcode')
         }
     };
 
