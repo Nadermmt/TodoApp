@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {styles} from './styles';
@@ -12,13 +12,11 @@ const Home = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <TouchableOpacity
-                style={{alignSelf: 'flex-end', padding: 4, marginEnd: 8, marginTop: 8}}
+                style={styles.logoutButtonContainer}
                 onPress={onLogout}
             >
-                <Text>Logout</Text>
+                <Text style={styles.logoutButtonText}>Logout</Text>
             </TouchableOpacity>
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            </View>
         </View>
     );
 };

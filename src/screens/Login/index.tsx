@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {Text, TextInput, TouchableOpacity, View} from 'react-native';
-import {Colors} from "../../assets";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {styles} from './styles';
 
@@ -16,16 +15,16 @@ const Login = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <TextInput
-                    style={{width: '50%', borderWidth: 1, borderColor: Colors.grey, padding: 4, color: Colors.black}}
-                    onChangeText={text => setPassCode(text)}
-                    keyboardType={'number-pad'}
-                />
-                <TouchableOpacity onPress={onLogin}>
-                    <Text style={{color: Colors.black}}>Login</Text>
-                </TouchableOpacity>
-            </View>
+            <TextInput
+                style={styles.passcodeInput}
+                onChangeText={text => setPassCode(text)}
+                keyboardType={'number-pad'}
+            />
+            <TouchableOpacity
+                style={styles.loginButtonContainer}
+                onPress={onLogin}>
+                <Text style={styles.loginButtonText}>Login</Text>
+            </TouchableOpacity>
         </View>
     );
 };
