@@ -47,7 +47,7 @@ const TodoItemCard: React.FC<{
                 onPress={onDelete}
             />
             <ImageButton
-                source={Images.bin}
+                source={Images.duplicate}
                 onPress={onDuplicate}
             />
         </View>
