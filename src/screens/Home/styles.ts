@@ -12,6 +12,14 @@ export const styles = StyleSheet.create({
         marginTop: 8
     },
     logoutButtonText: {
-        color: Colors.black
+        color: Colors.black,
+        margin: 8
+    },
+    addButton: {
+        flex: 0.08,
+        margin: 8,
+        borderRadius: 500,
+        backgroundColor: Colors.grey,
+        alignSelf: 'flex-end'
     }
 });
